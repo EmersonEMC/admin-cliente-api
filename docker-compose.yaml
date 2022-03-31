@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/home/node/app'
+    entrypoint: ./.docker/entrypoint.sh
+    environment:
+      - NODE_ENV=development
+    ports:
+      - '3000:3000'
+      - '8229:9229'
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
