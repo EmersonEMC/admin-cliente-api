@@ -15,8 +15,10 @@ RUN apk upgrade --update \
 
 RUN npm i -g @nestjs/cli@8.2.4
 
-USER node
+RUN mkdir -p /home/node/app/ && chown -R node:node /home/node/app
 
 WORKDIR /home/node/app
+
+USER node
 
 COPY . .
